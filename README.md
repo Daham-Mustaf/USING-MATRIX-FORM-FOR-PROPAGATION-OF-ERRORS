@@ -6,7 +6,6 @@ The propagation of errors is useful to estimate one component of the relative ac
 Xi =R*cos(A)*cos(V);<br />
 Yi =R*sin(A)*cos(V);<br />
 Zi =R*sin(V);<br />
-
 where<br />
 R is the measured range distance from the sensor to the object point. <br />
 Az is the measured azimuth angle of the laser beam.<br />
