@@ -52,18 +52,19 @@ Sigma_ll= diag(Std_ll);                   % variances covariances matrix of meas
 
 % law of propagation of variances (SLOPOV). 
 % #################
-Sigma_Xb_Yb=F*Sigma_ll*F'; %M2
-save('Sigma_Xb_Yb.txt', 'Sigma_Xb_Yb', '-ascii')
+Sigma_X_Y_Z=F*Sigma_ll*F'; %M2
+save('Sigma_X_Y_Z.txt', 'Sigma_X_Y_Z', '-ascii')
 
-% standard deviation in the (Sigma_##_##) 
-% the squer root of diagonal for Sgma(## ##) is a standard deviation of Xb Yb
-% #################
-ST_S_Tab=[sqrt(Sigma_Xb_Yb(1,1)); sqrt(Sigma_Xb_Yb(2,2))];  % M 
+% standard deviation in the 
+% the squer root of diagonal for Sgma(Sigma_X_Y_Z) is a standard deviation
+% of the estimated parramiters.
+ST_X_Y_Z=[sqrt(Sigma_X_Y_Z(1,1)); sqrt(Sigma_X_Y_Z(2,2))];  % M 
+save('ST_X_Y_Z.txt', 'ST_X_Y_Z', '-ascii')
  
 % Note that the off-diagonal of (Sigma_##_##) is not equal to zero, and thus Xb Yb correlated
 % Correlation computation only shows measures linear relationships. 
 % A correlation coefficient of zero does not necessarily mean zero
 % relationship between the two tested variables; it only means that the two variables have zero linear relationship
-C_X_Y=Sigma_Xb_Yb(1,2)/ sqrt(Sigma_Xb_Yb(1,1))*sqrt(Sigma_Xb_Yb(2,2));
+%X_Y_Z=ST_X_Y_Z(1,2)/ sqrt(ST_X_Y_Z(1,1))*sqrt(ST_X_Y_Z(2,2));
 
 
