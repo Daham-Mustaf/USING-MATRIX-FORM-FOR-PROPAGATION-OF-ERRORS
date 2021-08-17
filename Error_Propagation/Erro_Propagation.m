@@ -46,13 +46,13 @@ result = eval([X,Y,Z]); % m
 save('result.txt','result', '-ascii')
  
 % compute the sigma of measurment 
-Std_ll=[(.05*pi/180)^2; (.05*pi/180)^2; .02^2 ];    % vector of standard deviations
+Std_ll=[(.05*pi/180)^2; (.05*pi/180)^2; .02^2 ];    % vector of standard deviations trnasfer dgree to radian
 Sigma_ll= diag(Std_ll);                   % variances covariances matrix of measurment.
  save('Sigma_ll.txt', 'Sigma_ll', '-ascii')
 
 % law of propagation of variances (SLOPOV). 
 % #################
-Sigma_X_Y_Z=F*Sigma_ll*F'; %M2
+Sigma_X_Y_Z=F*Sigma_ll*F'; %Unit 
 save('Sigma_X_Y_Z.txt', 'Sigma_X_Y_Z', '-ascii')
 
 % standard deviation in the 
