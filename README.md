@@ -22,6 +22,7 @@ Std_ll=[(.05*pi/180)^2; (.05*pi/180)^2; .02^2 ];    % vector of standard deviati
 Sigma_ll= diag(Std_ll);                   % variances covariances matrix of measurment.
  save('Sigma_ll.txt', 'Sigma_ll', '-ascii')
  ```
+`diag(A)` returns a column vector of the main diagonal elements of A.<br />
 Sigma_Xb_Yb:- the variance-covariance matrix of the derived coordinates of the point cloud.<br />
 ```Matlab
 % law of propagation of variances (SLOPOV). 
