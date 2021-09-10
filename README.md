@@ -12,8 +12,23 @@ Az is the measured azimuth angle of the laser beam.<br />
 V is the measured vertical angle of the laser beam measured from the horizontal plane. X1, Y1, and Z1 are the coordinates of the Lidar.<br />
 included in the model, then the estimated errors of the scanned point represent the relative accuracy (noise in the point cloud).<br />
 An error propagation can be applied to using Jacobian matrix J to estimate the errors of the scanned points in a point cloud as follows:<br />
+```Matlab
+J=jacobian([X;Y;Z],[A V R]);
+```
+`jacobian(f,v)`computes the [`Jacobian matrix`](https://de.mathworks.com/help/symbolic/sym.jacobian.html#bt9ooh8-2) of f with respect to v. The `(i,j)` element of the result is ∂f(i)|∂v(j). <br />
 Sigma_ll:- the variance-covariance matrix of the observed range and angles of the point cloudP<br />
+```Matlab
+Std_ll=[(.05*pi/180)^2; (.05*pi/180)^2; .02^2 ];    % vector of standard deviations trnasfer dgree to radian
+Sigma_ll= diag(Std_ll);                   % variances covariances matrix of measurment.
+ save('Sigma_ll.txt', 'Sigma_ll', '-ascii')
+ ```
 Sigma_Xb_Yb:- the variance-covariance matrix of the derived coordinates of the point cloud.<br />
+```Matlab
+% law of propagation of variances (SLOPOV). 
+% #################
+Sigma_X_Y_Z=F*Sigma_ll*F'; %Unit 
+save('Sigma_X_Y_Z.txt', 'Sigma_X_Y_Z', '-ascii')
+ ```
 
 Then the standard deviations of the scanned point coordinates are the squared roots of the main<br />
 diagonal elements as follows:<br />
